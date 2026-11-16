@@ -118,7 +118,7 @@ namespace JatekProjekt
         // Keresd meg OrderByDescending és FirstOrDefault segítségével annak a karakternek a nevét, akinek a legtöbb aranya van!
         public string LeggazdagabbKarakterNeve()
         {
-            string biggestWhale = karakterek.OrderByDescending(x => x.Arany).Select(x => x.Nev).First();
+            string biggestWhale = karakterek.OrderByDescending(x => x.Arany).Select(x => x.Nev).FirstOrDefault();
 
             return biggestWhale;
         }
@@ -126,7 +126,7 @@ namespace JatekProjekt
         // Keresd meg OrderBy és FirstOrDefault segítségével a legszegényebb (legkevesebb aranyú) karakter nevét!
         public string LegszegenyebbKarakterNeve()
         {
-            string poorest = karakterek.OrderBy(x => x.Arany).Select(x => x.Nev).First();
+            string poorest = karakterek.OrderBy(x => x.Arany).Select(x => x.Nev).FirstOrDefault();
 
             return poorest;
         }
@@ -155,31 +155,41 @@ namespace JatekProjekt
         // Csoportosítsd a karaktereket az Osztaly tulajdonságuk alapján, és alakítsd át ToDictionary-vel úgy, hogy a kulcs az osztály neve, az érték pedig a karakterek darabszáma legyen!
         public Dictionary<string, int> OsztalyonkentKarakterSzam()
         {
-            throw new NotImplementedException();
+            Dictionary<string, int> osztalySzerintCsoport = karakterek.GroupBy(x => x.Osztaly).ToDictionary(g => g.Key, g => g.Count());
+
+            return osztalySzerintCsoport;
         }
 
         // Csoportosítsd a karaktereket a Szerver tulajdonságuk alapján, és számold meg, hány karakter játszik az egyes szervereken!
         public Dictionary<string, int> SzerverenKarakterekSzama()
         {
-            throw new NotImplementedException();
+            Dictionary<string, int> szerverSzerintCsoport = karakterek.GroupBy(x => x.Szerver).ToDictionary(g => g.Key, g => g.Count());
+
+            return szerverSzerintCsoport;
         }
 
         // Gyűjtsd ki az összes "Harcos" osztályú karakter azonosítóját (Id) egy listába!
         public List<int> HarcosokAzonositoi()
         {
-            throw new NotImplementedException();
+            List<int> harcosokAzonosito = karakterek.Where(x => x.Osztaly == "Harcos").Select(x => x.Id).ToList();
+
+            return harcosokAzonosito;
         }
 
         // Állapítsd meg, hogy van-e olyan 50-es szintnél magasabb Mágus, akinek 3000-nél kevesebb aranya van!
         public bool VanETolvajSpecKondicioval()
         {
-            throw new NotImplementedException();
+            bool szegenyMagus = karakterek.Any(x => x.Osztaly == "Mágus" && x.Arany < 3000);
+
+            return szegenyMagus;
         }
 
         // Keresd meg és add vissza a legmagasabb szintű karakter objektumát!
         public Karakter LegmagasabbSzintuKarakterObjektum()
         {
-            throw new NotImplementedException();
+            Karakter legmagassabSzintu = karakterek.OrderByDescending(s => s.Szint).FirstOrDefault();
+
+            return legmagassabSzintu;
         }
 
     }
