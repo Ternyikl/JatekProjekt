@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace JatekProjekt
 {
@@ -97,7 +98,7 @@ namespace JatekProjekt
         // Keresd meg FirstOrDefault segítségével az első olyan karaktert, akinek az aranya meghaladja az 5000-et!
         public Karakter LegelsoOvenKarakter()
         {
-            Karakter elso5kplusz = karakterek.FirstOrDefault(x => x.Arany > 5000);
+            Karakter elso5kplusz = karakterek.First(x => x.Arany > 5000);
 
             return elso5kplusz;
         }
@@ -118,7 +119,7 @@ namespace JatekProjekt
         // Keresd meg OrderByDescending és FirstOrDefault segítségével annak a karakternek a nevét, akinek a legtöbb aranya van!
         public string LeggazdagabbKarakterNeve()
         {
-            string biggestWhale = karakterek.OrderByDescending(x => x.Arany).Select(x => x.Nev).FirstOrDefault();
+            string biggestWhale = karakterek.OrderByDescending(x => x.Arany).Select(x => x.Nev).First();
 
             return biggestWhale;
         }
@@ -126,7 +127,7 @@ namespace JatekProjekt
         // Keresd meg OrderBy és FirstOrDefault segítségével a legszegényebb (legkevesebb aranyú) karakter nevét!
         public string LegszegenyebbKarakterNeve()
         {
-            string poorest = karakterek.OrderBy(x => x.Arany).Select(x => x.Nev).FirstOrDefault();
+            string poorest = karakterek.OrderBy(x => x.Arany).Select(x => x.Nev).First();
 
             return poorest;
         }
@@ -187,7 +188,7 @@ namespace JatekProjekt
         // Keresd meg és add vissza a legmagasabb szintű karakter objektumát!
         public Karakter LegmagasabbSzintuKarakterObjektum()
         {
-            Karakter legmagassabSzintu = karakterek.OrderByDescending(s => s.Szint).FirstOrDefault();
+            Karakter legmagassabSzintu = karakterek.OrderByDescending(s => s.Szint).First();
 
             return legmagassabSzintu;
         }

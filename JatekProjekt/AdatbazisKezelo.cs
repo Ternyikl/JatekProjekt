@@ -33,15 +33,18 @@ namespace JatekProjekt
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            Karakter karakter = new Karakter(
-                                reader.GetInt32("id"),
-                                reader.GetString("nev"),
-                                reader.GetString("osztaly"),
-                                reader.GetInt32("szint"),
-                                reader.GetInt32("arany"),
-                                reader.GetString("szerver")
+                            while (reader.Read())
+                            {
+                                Karakter karakter = new Karakter(
+                                    reader.GetInt32("Id"),
+                                    reader.GetString("Nev"),
+                                    reader.GetString("Osztaly"),
+                                    reader.GetInt32("Szint"),
+                                    reader.GetInt32("Arany"),
+                                    reader.GetString("Szerver")
                                 );
-                            karakterek.Add(karakter);
+                                karakterek.Add(karakter);
+                            }
                         }
                     }
                 }
