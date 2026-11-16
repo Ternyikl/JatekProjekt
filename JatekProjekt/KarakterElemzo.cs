@@ -65,31 +65,41 @@ namespace JatekProjekt
         // Számold meg Sum segítségével, hogy mennyi a karakterek összes aranya a szerveren!
         public int OsszesAranyMennyiseg()
         {
-            throw new NotImplementedException();
+            int osszesArany = karakterek.Sum(x => x.Arany);
+
+            return osszesArany;
         }
 
         // Számítsd ki Average segítségével a karakterek átlagos szintjét double értékként!
         public double AtlagSzint()
         {
-            throw new NotImplementedException();
+            double atlagSzint = karakterek.Average(x => x.Szint);
+
+            return atlagSzint;
         }
 
         // Állapítsd meg Any segítségével, hogy van-e olyan "Tolvaj" osztályú karakter, akinek a szintje eléri vagy meghaladja a 40-et!
         public bool VaneMagasSzintuTolvaj()
         {
-            throw new NotImplementedException();
+            bool vanTolvaj = karakterek.Any(x => x.Osztaly == "Tolvaj" && x.Szint >= 40);
+
+            return vanTolvaj;
         }
 
         // Ellenőrizd Any segítségével, hogy létezik-e olyan karakter, akinek 10 000 aranynál több van a zsebében!
         public bool VanETizEzerAranynalTobb()
         {
-            throw new NotImplementedException();
+            bool whale = karakterek.Any(x => x.Arany >= 10000);
+
+            return whale;
         }
 
         // Keresd meg FirstOrDefault segítségével az első olyan karaktert, akinek az aranya meghaladja az 5000-et!
         public Karakter LegelsoOvenKarakter()
         {
-            throw new NotImplementedException();
+            Karakter elso5kplusz = karakterek.FirstOrDefault(x => x.Arany > 5000);
+
+            return elso5kplusz;
         }
 
 

@@ -49,10 +49,12 @@ namespace JatekProjekt
             catch(MySqlException ex)
             {
                 Console.WriteLine("Hiba az adatbázis betöltése során: " + ex.Message);
+                Environment.Exit(1);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Nem az adatbázis köthető hiba történt: " + ex.Message);
+                Environment.Exit(1);
             }
 
             return karakterek;
