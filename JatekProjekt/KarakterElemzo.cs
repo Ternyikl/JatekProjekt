@@ -110,31 +110,41 @@ namespace JatekProjekt
         // Add vissza az összes karaktert szint szerint csökkenő, azon belül pedig név szerint növekvő sorrendbe rendezve!
         public List<Karakter> KarakterekSzintSzerintRendezve()
         {
-            throw new NotImplementedException();
+            List<Karakter> szintSzerint = karakterek.OrderByDescending(x => x.Szint).ThenBy(x => x.Nev).ToList();
+
+            return szintSzerint;
         }
 
         // Keresd meg OrderByDescending és FirstOrDefault segítségével annak a karakternek a nevét, akinek a legtöbb aranya van!
         public string LeggazdagabbKarakterNeve()
         {
-            throw new NotImplementedException();
+            string biggestWhale = karakterek.OrderByDescending(x => x.Arany).Select(x => x.Nev).First();
+
+            return biggestWhale;
         }
 
         // Keresd meg OrderBy és FirstOrDefault segítségével a legszegényebb (legkevesebb aranyú) karakter nevét!
         public string LegszegenyebbKarakterNeve()
         {
-            throw new NotImplementedException();
+            string poorest = karakterek.OrderBy(x => x.Arany).Select(x => x.Nev).First();
+
+            return poorest;
         }
 
         // Keresd meg Max segítségével a legmagasabb szintű karakter szintjét!
         public int LegmagasabbSzint()
         {
-            throw new NotImplementedException();
+            int highestLevel = karakterek.Max(x => x.Szint);
+
+            return highestLevel;
         }
 
         // Rendezd a karaktereket a nevük hossza szerint növekvő sorrendbe!
         public List<Karakter> KarakterekNevHosszaSzerint()
         {
-            throw new NotImplementedException();
+            List<Karakter> nevHosszSzerint = karakterek.OrderBy(x => x.Nev.Length).ToList();
+
+            return nevHosszSzerint;
         }
 
 
