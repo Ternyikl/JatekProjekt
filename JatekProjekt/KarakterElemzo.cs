@@ -17,6 +17,7 @@ namespace JatekProjekt
             this.karakterek = dbKezelo.AdatokBetoltese();
         }
 
+        // Gyűjti az összes karakter nevét aki 80-as szint vagy a felett van
         public List<string> MagasSzintuKarakterek()
         {
             throw new NotImplementedException();
